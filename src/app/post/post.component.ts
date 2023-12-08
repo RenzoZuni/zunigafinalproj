@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class PostComponent implements OnInit {
 
-  memberName = "Lan";
+  memberName = "Renzo";
   constructor(private postService: PostService, private router: Router) {
   }
   @Input() index: number = 0;

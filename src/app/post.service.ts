@@ -39,7 +39,7 @@ export class PostService {
 
 
     
-    this.http.delete(`https://projectpost-12d4d-default-rtdb.asia-southeast1.firebasedatabase.app/posts/${index}.json`).subscribe(() => {
+    this.http.delete(`https://zunigaproject-84a6e-default-rtdb.asia-southeast1.firebasedatabase.app/posts/${index}.json`).subscribe(() => {
       console.log('Post deleted from Firebase');
       this.listOfPosts.splice(index, 1);
     });
@@ -56,7 +56,7 @@ export class PostService {
   }
   likePost(index: number) {
     this.listOfPosts[index].numberOfLikes++;
-    this.http.put(`https://projectpost-12d4d-default-rtdb.asia-southeast1.firebasedatabase.app/posts/${index}.json`, this.listOfPosts[index])
+    this.http.put(`https://zunigaproject-84a6e-default-rtdb.asia-southeast1.firebasedatabase.app/posts/${index}.json`, this.listOfPosts[index])
       .subscribe(() => {
         console.log('Post updated in Firebase');
       });
@@ -65,7 +65,7 @@ export class PostService {
   }
   addComment(index: number, comment: string) {
     this.listOfPosts[index].comments.push(comment);
-    this.http.patch(`https://projectpost-12d4d-default-rtdb.asia-southeast1.firebasedatabase.app/posts/${index}.json`, { comments: this.listOfPosts[index].comments })
+    this.http.patch(`https://zunigaproject-84a6e-default-rtdb.asia-southeast1.firebasedatabase.app/posts/${index}.json`, { comments: this.listOfPosts[index].comments })
       .subscribe(() => {
         console.log('Comment added to Firebase');
       });
