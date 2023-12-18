@@ -4,7 +4,6 @@ html, body {
     width: 100vw;
     height: 100vh;
     font-family: Arial, Helvetica, sans-serif;
-    background: url('https://media2.giphy.com/media/U3qYN8S0j3bpK/giphy.gif?cid=ecf05e47tr9isekbu6x6l65r64ayi0eavubn4jkw955rntdg&ep=v1_gifs_search&rid=giphy.gif&ct=g') no-repeat center center fixed;
-    background-size: cover;
+  
     color: #ffffff;
   }

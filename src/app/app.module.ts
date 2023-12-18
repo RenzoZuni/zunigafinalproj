@@ -17,7 +17,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthGuard } from './auth-guard/auth-guard.component';
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
-import { ProfileUserComponent } from './profile-user/profile-user.component';
+
 
 
 
@@ -29,7 +29,7 @@ const routes: Routes = [
   { path: 'post-edit/:index', component: PostEditComponent,  },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'profile-user', component: ProfileUserComponent },
+
 ]
 
 @NgModule({
