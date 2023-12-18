@@ -1,0 +1,20 @@
+.post-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    width:50%;
+    margin: 3% auto; /* Add this line */
+    position: relative;
+    border: 2px solid rgb(0, 255, 255);
+}
+.BOT{
+   display: flex;
+margin: 0 30px;
+}
+.button-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }

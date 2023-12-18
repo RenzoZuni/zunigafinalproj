@@ -1,27 +1,25 @@
-
-<nav class="navbar navbar-expand-lg">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">CRUD</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="d-flex justify-content-end nav-fill" id="navbarTogglerDemo02">
-      <ul class="nav me-auto mb-2 mb-lg-0 nav-justified">
-        <li class="nav-item" routerLinkActive="active-home">
-          <a class="nav-link active" aria-current="page" routerLink="/post-list"  href="#">Home</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" *ngIf="showNavbar">
+  <div class="container-fluid d-flex justify-content-between">
+    <div>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/post-list">Home</a>
         </li>
-        <li class="nav-item" routerLinkActive="active-post">
-          <a class="nav-link"  routerLink="/post-add" href="#">Create Post</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active-sign-up">
-          <a class="nav-link" routerLink="/authentication-si" routerLinkActive="active">Sign Up</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active-sign-in">
-          <a class="nav-link" routerLink="/authentication-su" routerLinkActive="active">Sign In</a>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/post-add">Create Post</a>
         </li>
       </ul>
-     
+    </div>
+    <a class="navbar-brand mx-auto" routerLink="/post-list">GUTIERREZ</a>
+    <div>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="profile-user">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="onLogout()">Logout</a>
+        </li>
+      </ul>
     </div>
   </div>
 </nav>
-

@@ -20,7 +20,7 @@ export class PostEditComponent implements OnInit {
     let description = '';
     this.actRoute.params.subscribe((params: Params) => {
       if (params['index']) {
-        this.index = +params['index'];
+        this.index= +params['index'];
         console.log(params['index'])
 
         const postSpec = this.postService.getSpecPost(this.index);
@@ -41,9 +41,9 @@ export class PostEditComponent implements OnInit {
     const title = this.form.value.title;
     const imgPath = this.form.value.imgPath;
     const description = this.form.value.description;
-    const post: Post = new Post(
-      title, imgPath, description, 'Renzo', new Date(), 0
-    );
+      const post: Post = new Post(
+        title, imgPath, description, 'ZUNIGA', new Date(), 0, 0
+      );
     if (this.editMode == true) {
       this.postService.updatePost(this.index, post);
     }

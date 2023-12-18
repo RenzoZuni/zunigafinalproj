@@ -1,0 +1,12 @@
+<div class="login-form">
+    <h2>LOGIN</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        <input type="email" formControlName="email" placeholder="Email">
+        <input [type]="hidePassword ? 'password' : 'text'" formControlName="password" placeholder="Password">
+        <label>
+          <input type="checkbox" (change)="togglePasswordVisibility()"> Show Password
+        </label>
+        <button type="submit">Login</button>
+    </form>
+    <p>Don't have an account? <a routerLink="/register">Register</a></p>
+</div>

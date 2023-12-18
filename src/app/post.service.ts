@@ -5,10 +5,10 @@ import { HttpClient } from "@angular/common/http";
 
 @Injectable({ providedIn: 'root' })
 export class PostService {
-  constructor(private http:HttpClient){}
+  constructor(private http: HttpClient) { }
   listChangedEvent: EventEmitter<Post[]> = new EventEmitter();
   listOfPosts: Post[] = [
-    /*
+        /*
       new Post("TechCrunch",
         "https://www.hostinger.com/tutorials/wp-content/uploads/sites/2/2021/12/techcrunch-website-homepage-1024x542.webp",
         "TechCrunch is a blog that provides technology and startup news, from the latest developments in Silicon Valley to venture capital funding.",
@@ -31,22 +31,28 @@ export class PostService {
         2
       ),
       */
-  ];
+
+];
+
   getPost() {
     return this.listOfPosts;
   }
   deleteButton(index: number) {
-
-
-    
+    // Delete the post from the local array
+    this.listOfPosts.splice(index, 1);
+  
+    // Now delete the post from Firebase
     this.http.delete(`https://zunigaproject-84a6e-default-rtdb.asia-southeast1.firebasedatabase.app/posts/${index}.json`).subscribe(() => {
       console.log('Post deleted from Firebase');
-      this.listOfPosts.splice(index, 1);
     });
   }
   addPost(post: Post) {
     this.listOfPosts.push(post);
-    
+    this.http.put(`https://zunigaproject-84a6e-default-rtdb.asia-southeast1.firebasedatabase.app/posts.json`, this.listOfPosts)
+      .subscribe(response => {
+        console.log(response);
+        this.listChangedEvent.emit(this.listOfPosts.slice());
+      });
   }
   updatePost(index: number, post: Post) {
     this.listOfPosts[index] = post;
@@ -56,28 +62,59 @@ export class PostService {
   }
   likePost(index: number) {
     this.listOfPosts[index].numberOfLikes++;
-    this.http.put(`https://zunigaproject-84a6e-default-rtdb.asia-southeast1.firebasedatabase.app/posts/${index}.json`, this.listOfPosts[index])
+    
+    // Update the post in Firebase
+    this.http.put(`https://gutierrez-firebase-default-rtdb.asia-southeast1.firebasedatabase.app/posts/${index}.json`, this.listOfPosts[index])
       .subscribe(() => {
         console.log('Post updated in Firebase');
       });
+      //2.4
   
-  
-  }
-  addComment(index: number, comment: string) {
-    this.listOfPosts[index].comments.push(comment);
-    this.http.patch(`https://zunigaproject-84a6e-default-rtdb.asia-southeast1.firebasedatabase.app/posts/${index}.json`, { comments: this.listOfPosts[index].comments })
-      .subscribe(() => {
-        console.log('Comment added to Firebase');
-      });
   }
   getComments(index: number) {
-    
     return this.listOfPosts[index].comments;
   }
   setPosts(listOfPosts: Post[]) {
     this.listOfPosts = listOfPosts;
     this.listChangedEvent.emit(listOfPosts);
   }
+  addComment(index: number, comment: string) {
+    this.listOfPosts[index].comments.push(comment);
+    
+    // Update the post in Firebase
+    this.http.put(`https://zunigaproject-84a6e-default-rtdb.asia-southeast1.firebasedatabase.app/posts/${index}.json`, this.listOfPosts[index])
+      .subscribe(() => {
+        console.log('Post updated in Firebase');
+      });
+  }
+  
+  editComment(postIndex: number, commentIndex: number, newComment: string) {
+    this.listOfPosts[postIndex].comments[commentIndex] = newComment;
+  
+    // Update the post in Firebase
+    this.http.put(`https://zunigaproject-84a6e-default-rtdb.asia-southeast1.firebasedatabase.app/posts/${postIndex}.json`, this.listOfPosts[postIndex])
+      .subscribe(() => {
+        console.log('Comment updated in Firebase');
+      });
+  }
+  
+  deleteComment(postIndex: number, commentIndex: number) {
+    this.listOfPosts[postIndex].comments.splice(commentIndex, 1);
+  
+    // Update the post in Firebase
+    this.http.put(`https://zunigaproject-84a6e-default-rtdb.asia-southeast1.firebasedatabase.app/posts/${postIndex}.json`, this.listOfPosts[postIndex])
+      .subscribe(() => {
+        console.log('Comment deleted from Firebase');
+      });
+  }
+  dislikePost(index: number) {
+    
+    this.listOfPosts[index].numberOfDislikes++;
+  
+    // Update the post in Firebase
+    this.http.put(`https://zunigaproject-84a6e-default-rtdb.asia-southeast1.firebasedatabase.app/posts/${index}.json`, this.listOfPosts[index])
+      .subscribe(() => {
+        console.log('Post updated in Firebase');
+      });
+  }
 }
-
-

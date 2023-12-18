@@ -1,0 +1,59 @@
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: aqua;
+}
+    .login-form {
+        background: url('https://media2.giphy.com/media/TBAl2X3TVKa7IxWqLm/giphy.gif?cid=ecf05e47xjaqpyulwjm1foa07134ajglyh90pa0ykxn0d65f&ep=v1_gifs_search&rid=giphy.gif&ct=g') no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 300px;
+        padding: 30px;
+        border: 3px solid rgb(5, 251, 255);
+        border-radius: 4px;
+    }
+
+    .login-form input[type="email"], .login-form input[type="password"], .login-form input[type="text"] {
+        display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 3px solid #ccc;
+    }
+
+.login-form button {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: none;
+    background-color: #cc00ff;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+.login-form button:hover {
+    background-color:#09ff00;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 100%;
+    background-color: black;
+}
+p{
+    color: rgb(255, 255, 255);
+}
+label {
+    color: #fff;
+  }

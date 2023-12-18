@@ -9,8 +9,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit {
-
+  commentValue: string = '';
   memberName = "Renzo";
+
   constructor(private postService: PostService, private router: Router) {
   }
   @Input() index: number = 0;
@@ -24,14 +25,38 @@ export class PostComponent implements OnInit {
   delete() {
     this.postService.deleteButton(this.index);
   }
+  
   onEdit() {
     this.router.navigate(['/post-edit', this.index])
   }
   onLike() {
     this.postService.likePost(this.index)
   }
-  onAddComment(comment: string) {
-    this.postService.addComment(this.index, comment);
+ 
+  onAddComment(commentInput: HTMLInputElement) {
+    this.postService.addComment(this.index, commentInput.value);
     this.comments = this.postService.getComments(this.index); // Refresh the comments
+    commentInput.value = ''; // Clear the input field
+}
+  
+  editComment(commentIndex: number, newComment: string) {
+    this.postService.editComment(this.index, commentIndex, newComment);
+    this.comments = this.postService.getComments(this.index); // Refresh the comments
+  }
+  
+  deleteComment(commentIndex: number) {
+    this.postService.deleteComment(this.index, commentIndex);
+    this.comments = this.postService.getComments(this.index); // Refresh the comments
+  }
+  startEditingComment(commentIndex: number) {
+    this.editingCommentIndex = commentIndex;
+  }
+  editingCommentIndex: number | null = null;
+  saveEditedComment(commentIndex: number, newComment: string) {
+    this.editComment(commentIndex, newComment);
+    this.editingCommentIndex = null;
+  }
+  onDislike() {
+    this.postService.dislikePost(this.index);
   }
 }

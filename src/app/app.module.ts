@@ -10,14 +10,28 @@ import { PostEditComponent } from './post-edit/post-edit.component';
 import { Routes } from '@angular/router';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from './auth/auth.service';
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from './environments/environment';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { AuthGuard } from './auth-guard/auth-guard.component';
+import {AngularFireStorageModule} from "@angular/fire/compat/storage";
+import { ProfileUserComponent } from './profile-user/profile-user.component';
+
+
 
 const routes: Routes = [
-  { path: '', redirectTo: 'post-list', pathMatch: 'full' },
-  { path: 'post-list', component: PostListComponent },
-  { path: 'post-add', component: PostEditComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full'  },
+  { path: 'post-list', component: PostListComponent},
+  { path: 'post-add', component: PostEditComponent, },
   { path: 'authentication', component: AuthComponent },
-  { path: 'post-edit/:index', component: PostEditComponent },
+  { path: 'post-edit/:index', component: PostEditComponent,  },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'profile-user', component: ProfileUserComponent },
 ]
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,16 +39,33 @@ const routes: Routes = [
     HeaderComponent,
     PostComponent,
     PostListComponent,
-    PostEditComponent
+    PostEditComponent,
+    LoginComponent,
+    RegisterComponent,
+    
+  
+    
+
   ],
   imports: [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(routes),
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFireModule.initializeApp({
+      apiKey: "AIzaSyDy7atW1aEoUIluLqOsbbGlzYorauZTEaU",
+  authDomain: "zunigaproject-84a6e.firebaseapp.com",
+  databaseURL: "https://zunigaproject-84a6e-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "zunigaproject-84a6e",
+  storageBucket: "zunigaproject-84a6e.appspot.com",
+  messagingSenderId: "736922745933",
+  appId: "1:736922745933:web:fc2cb4f8664c39a1a57004"
+    }),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule
   ],
-  providers: [],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

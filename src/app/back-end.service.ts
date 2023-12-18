@@ -11,8 +11,7 @@ export class BackEndService {
 
   constructor(private postService: PostService, private http: HttpClient) { }
 
- 
-saveData(){
+  saveData(){
     const listofPosts: Post[] = this.postService.getPost();
     this.http.put('https://zunigaproject-84a6e-default-rtdb.asia-southeast1.firebasedatabase.app/posts.json', listofPosts)
     .subscribe((res) => {
@@ -26,7 +25,7 @@ saveData(){
     return this.http.get<Post[]>('https://zunigaproject-84a6e-default-rtdb.asia-southeast1.firebasedatabase.app/posts.json')
       .pipe(tap((listofPosts: Post[])=> {
         console.log(listofPosts)
-  
+
         listofPosts.forEach(post => {
           if (!Array.isArray(post.comments)) {
             post.comments = [];

@@ -1,0 +1,55 @@
+div {
+    background: url('https://media2.giphy.com/media/TBAl2X3TVKa7IxWqLm/giphy.gif?cid=ecf05e47xjaqpyulwjm1foa07134ajglyh90pa0ykxn0d65f&ep=v1_gifs_search&rid=giphy.gif&ct=g') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    padding: 30px;
+    border: 3px solid rgb(5, 251, 255);
+    border-radius: 4px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: rgb(5, 251, 255);
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: rgb(255, 255, 255);
+}
+
+input[type="email"], input[type="password"] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 3px solid #ccc;
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: none;
+    background-color: #cc00ff;
+    color: white;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color:  #09ff00;
+}
+p {
+    color: #ffffff; /* This will apply white color to the text */
+}
